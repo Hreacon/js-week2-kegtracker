@@ -1,16 +1,8 @@
-# _Project Title_
+# _Beer Boss/Keg Tracker_
 
-#### _A simple template, 3.__.2016_
+#### _A simple angular app, 3.23.2016_
 
-### By _** Nicholas Jensen-Hay and **_
-
-## Description
-
-_This web app is designed to ._
-
-_The goal of this project is to ._
-
-_The project was put together using ._
+### By _** Nicholas Jensen-Hay**_
 
 ## Setup/Installation
 
