@@ -20,13 +20,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             NewKegComponent = (function () {
                 function NewKegComponent() {
+                    this.onCreateKeg = new core_1.EventEmitter();
                 }
-                NewKegComponent.prototype.createKeg = function (newName) {
+                NewKegComponent.prototype.createKeg = function (newName, newBrand, newAlcoholContent, newPrice) {
+                    console.log("Creating a new keg " + newName.value);
+                    var ikeg = {
+                        name: newName.value,
+                        brand: newBrand.value,
+                        alcoholContent: parseInt(newAlcoholContent.value),
+                        price: parseInt(newPrice.value)
+                    };
+                    newName.value = "";
+                    newBrand.value = "";
+                    newAlcoholContent.value = "";
+                    newPrice.value = "";
+                    this.onCreateKeg.emit(ikeg);
                 };
                 NewKegComponent = __decorate([
                     core_1.Component({
                         selector: 'new-keg',
-                        template: "\n    <form (submit)=\"createKeg(newName)\">\n      <label for=\"name\">Keg Name</label><input type=\"text\" name=\"name\" #newName>\n    </form>\n  "
+                        outputs: ['onCreateKeg'],
+                        template: "\n    <form (submit)=\"createKeg(newName, newBrand, newAlcoholContent, newPrice)\">\n      <label for=\"name\">Keg Name</label><input type=\"text\" name=\"name\" #newName>\n      <label for=\"brand\">Keg brand</label><input type=\"text\" name=\"brand\" #newBrand>\n      <label for=\"alcoholContent\">Alcohol Content</label><input type=\"number\" name=\"AC\" #newAlcoholContent>\n      <label for=\"price\">Price/Pint</label><input type=\"number\" name=\"price\" #newPrice>\n      <input type=\"submit\" value=\"Add Keg\">\n    </form>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], NewKegComponent);

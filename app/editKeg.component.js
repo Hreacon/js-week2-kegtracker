@@ -11,36 +11,33 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var KegComponent;
+    var EditKegComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            KegComponent = (function () {
-                function KegComponent() {
-                    this.onEditKeg = new core_1.EventEmitter();
+            EditKegComponent = (function () {
+                function EditKegComponent() {
+                    this.onCloseForm = new core_1.EventEmitter();
                 }
-                KegComponent.prototype.sellPint = function () {
-                    this.keg.sellPint();
+                EditKegComponent.prototype.closeForm = function () {
+                    this.onCloseForm.emit(new Object());
                 };
-                KegComponent.prototype.editKeg = function () {
-                    this.onEditKeg.emit(this.keg);
-                };
-                KegComponent = __decorate([
+                EditKegComponent = __decorate([
                     core_1.Component({
-                        selector: 'keg-view',
+                        selector: 'edit-keg',
                         inputs: ['keg'],
-                        outputs: ['onEditKeg'],
-                        template: "\n    <div class=\"keg\" style=\"background:linear-gradient(white {{ keg.getFullPercent() }}%, #FBB117 {{ keg.getFullPercent() }}%)\">\n      <h3>{{ keg.name }}</h3>\n      <h5>{{ keg.alcoholContent }}%</h5>\n      <h5 class=\"price\" style=\"background: {{ keg.getPriceColor() }}\">{{ keg.price }}$/Pint </h5>\n      <p>{{ keg.brand }} Pints left: {{ keg.pints }}</p>\n      <button (click)=\"sellPint()\">Sell a Pint</button>\n      <button (click)=\"editKeg()\">Edit</button>\n    </div>\n  "
+                        outputs: ['onCloseForm'],
+                        template: "\n    <div class=\"editForm\">\n      <label for=\"name\">Keg Name</label><input type=\"text\" [(ngModel)]=\"keg.name\">\n      <label for=\"brand\">Keg brand</label><input type=\"text\" [(ngModel)]=\"keg.brand\">\n      <label for=\"alcoholContent\">Alcohol Content</label><input type=\"number\" [(ngModel)]=\"keg.alcoholContent\">\n      <label for=\"price\">Price/Pint</label><input min=\"0\" type=\"number\" [(ngModel)]=\"keg.price\">\n      <label for=\"pints\">Pint Level</label><input type=\"number\" min=\"0\" max=\"124\" [(ngModel)]=\"keg.pints\">\n      <button (click)=\"closeForm()\">Save Keg</button>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], KegComponent);
-                return KegComponent;
+                ], EditKegComponent);
+                return EditKegComponent;
             }());
-            exports_1("KegComponent", KegComponent);
+            exports_1("EditKegComponent", EditKegComponent);
         }
     }
 });
-//# sourceMappingURL=keg.component.js.map
+//# sourceMappingURL=editKeg.component.js.map

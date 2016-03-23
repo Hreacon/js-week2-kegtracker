@@ -96,7 +96,7 @@ gulp.task('scssBuild', function() {
 
 // End SCSS Section
 // SERVER Section
-
+var spa = require('browser-sync-spa');
 gulp.task('serve', function() {
   browserSync.init({
     server: {
